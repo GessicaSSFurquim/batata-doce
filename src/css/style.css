@@ -17,10 +17,9 @@ Author URI: http://www.designstub.com
 3. Home page banner
 4. Pitch Section
 5. Features Section
-6. Review
-7. Pricing
-8. Subscribe form
-9. Media Queries
+6. Pricing
+7. Subscribe form
+8. Media Queries
 ------------------*/
 
 
@@ -1366,75 +1365,6 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 	margin: 0 0 30px 0;
 }
 
-
-/*  --------------------------------------------------
-------------- Reviews Section Styling ----------------
------------------------------------------------------*/
-
-.app-features {
-	background: #FFFFFF;
-	padding: 100px 0 100px 0;
-}
-
-.app-features h1 {
-	font-size: 37px;
-	font-weight: 900;
-	margin: 0 0 10px 0;
-	text-transform:uppercase;
-}
-
-.app-features p {
-	font-size: 16px;
-	font-weight: 400;
-	color: #A1A1A1;
-	line-height: 1.4;
-	margin: 10px 0 50px 0;
-}
-
-
-.app-features img {
-	 margin: 0 auto;
-}
-
-.app-features .features-left, .app-features .features-right {
-	padding: 50px 0 0 0;
-}
-
-.app-features .icon {
-	margin-top: 10px;
-	margin-bottom: 20px;
-}
-
-.app-features .icon i {
-	font-size: 60px;
-	color: #00aeda;
-}
-
-
-.app-features .feature-single {
-	margin-left: 0;
-	margin-bottom: 50px;
-}
-
-
-.app-features .feature-single h1 {
-	font-size: 15px;
-	font-weight: 600;
-	color: #222222;
-	margin: 0 0 10px 0;
-	letter-spacing: 1px;
-	text-transform:uppercase;
-}
-
-.app-features .feature-single p {
-	font-size: 17px;
-	color: #A1A1A1;
-	line-height: 1.4;
-	letter-spacing: 1px;
-	margin: 10px 0 0 0;
-}
-
-
 /*-------------------------------------------------------
 ------------- Split Features Section Styling ------------
 --------------------------------------------------------*/
@@ -1492,59 +1422,6 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 	padding: 50px 0 50px 0;
 	overflow: hidden;
 }
-
-
-
-/*  --------------------------------------------------
-------------- Reviews Section Styling ----------------
------------------------------------------------------*/
-
-.review-section {
-	padding: 150px 0 150px 0;
-	text-align: center;
-	background: #00aeda;
-}
-
-
-.reviews {
-  width: 100%;
-}
-
-
-.review-single img {
-  width:80px;
-	height:80px;
-}
-
-.review-text h3 {
-	font-family: 'Roboto', sans-serif;
-  font-size: 13px;
-	font-weight: 500;
-	letter-spacing: 1px;
-	line-height: 1.5;
-  color: #222225;
-  text-transform:uppercase;
-}
-
-.review-text .ion {
-	display: inline-block;
-	margin-top: 20px;
-  font-size: 14px;
-  color: #ff8000;
-}
-
-.review-text p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 17px;
-	font-weight: 400;
-  padding: 20px 10px 20px 10px;
-	letter-spacing: 1px;
-	line-height: 1.5;
-  color: #fff;
-}
-
-
-
 
 /*  --------------------------------------------------
 ------------- Pricing Section Styling ----------------

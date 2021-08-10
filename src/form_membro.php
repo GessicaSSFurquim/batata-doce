@@ -1,124 +1,176 @@
 <?php
 session_start();
-if(!isset($_SESSION['usuario'])){
-    header("location:http://localhost:8081/index.html");
+if (!isset($_SESSION['usuario'])) {
+    header("location:http://localhost:8081/form_login.html");
 }
 ?>
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Academia Batata Doce</title>
-  <link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="iLand Multipurpose Landing Page Template">
-  <meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">
-  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-  <link rel="stylesheet" href="css/animate.css">
-  <!-- Recursos de estilo -->
-  <link rel="stylesheet" href="css/owl.carousel.css">
-  <link rel="stylesheet" href="css/owl.theme.css">
-  <link rel="stylesheet" href="css/ionicons.min.css">
-  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.87.0">
+    <title>Form Membro</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="/docs/5.1/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#7952b3">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="css/form-validation.css" rel="stylesheet">
 </head>
 
-<body>
-    <header>
-        <h1>Academia Batata Doce</h1>
-    </header>
-    <nav>
-        <p></p>
-    </nav>
-    <content>
-        <button class="accordion">
-            <h3>Membros</h3>
-        </button>
-        <div class="panel">
-            <p>Adicionar novo membro</p>
-            <p>Ver todos os membros</p>
-        </div>
+<body class="bg-light">
 
-        <button class="accordion">
-            <h3>Pagamentos</h3>
-        </button>
-        <div class="panel">
-            <p>Adicionar novo pagamento</p>
-            <p>Ver todos os pagamentos</p>
-        </div>
+    <div class="container">
+        <main>
+            <div class="py-5 text-center">
+                <h2>Cadastro de Membros</h2>
+            </div>
+            <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Dados Pessoais</h4>
+                <form class="needs-validation" novalidate action="cadastro_membro.php" method="POST">
 
-        <button class="accordion">
-            <h3>Treinadores</h3>
-        </button>
-        <div class="panel">
-            <p>Adicionar novo treinador</p>
-            <p>Ver todos os treinadores</p>
-        </div>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label for="firstName" class="form-label">Nome</label>
+                            <input type="text" name="nome" class="form-control" id="firstName" placeholder="Nome completo" value="" required>
+                            <div class="invalid-feedback">
+                                Por favor, insira um nome.
+                            </div>
+                        </div>
 
-        <script>
-            var acc = document.getElementsByClassName("accordion");
-            var i;
+                        <div class="col-12">
+                            <label for="dataDeNascimento" class="form-label">Data de Nascimento<span class="text-muted"></span></label>
+                            <input type="date" name="dataDeNascimento" class="form-control" id="dataDeNascimento">
+                            <div class="invalid-feedback">
+                                Por favor, insira uma data de nascimento.
+                            </div>
+                        </div>
 
-            for (i = 0; i < acc.length; i++) {
-                acc[i].addEventListener("click", function () {
-                    this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
-                    if (panel.style.display === "block") {
-                        panel.style.display = "none";
-                    } else {
-                        panel.style.display = "block";
-                    }
-                });
-            }
-        </script>
-    </content>
-    <main>
-        <h2>Dados do Membro</h2>
-        <form action="cadastro_membro.php" method="POST">
-            <table>
-                <tr>
-                    <td>Nome:</td>
-                    <td><input type="text" name="nome" size="50" value=""></td>
-                </tr>
-                <tr>
-                    <td>Data de Nascimento:</td>
-                    <td><input type="text" name="dataDeNascimento" size="50" value=""></td>
-                </tr>
-                <tr>
-                    <td>CPF:</td>
-                    <td><input type="text" name="cpf" size="50" value=""></td>
-                </tr>
-                <tr>
-                    <td>Endereço:</td>
-                    <td><input type="text" name="endereco" size="50" value=""></td>
-                </tr>
-                <tr>
-                    <td>Telefone:</td>
-                    <td><input type="text" name="telefone" size="50" value=""></td>
-                </tr>
-                <tr>
-                    <td>E-mail:</td>
-                    <td><input type="text" name="email" size="50" value=""></td>
-                </tr>
-                <tr>
-                    <td>ID do Pagamento:</td>
-                    <td><input type="text" name="idPagamento" size="50" value=""></td>
-                </tr>
-                <tr>
-                    <td>ID do Treinador:</td>
-                    <td><input type="text" name="idTreinador" size="50" value=""></td>
-                </tr>
-                <tr>
-                    <td><input type="reset" value="Limpar"></td>
-                    <td><input type="submit" value="Enviar Dados"></td>
-                </tr>
-            </table>
-        </form>
+                        <div class="col-12">
+                            <label for="cpf" class="form-label">CPF<span class="text-muted"></span></label>
+                            <input type="text" name="cpf" class="form-control" id="cpf" placeholder="000.000.000-00">
+                            <div class="invalid-feedback">
+                                Por favor, insira um cpf.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="address" class="form-label">Endereço</label>
+                            <input type="text" name="endereco" class="form-control" id="address" placeholder="Exemplo: Rua das Flores, 000 - Jardim das Orquídeas - Americana/SP" required>
+                            <div class="invalid-feedback">
+                                Por favor, insira um endereço.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="telefone" class="form-label">Telefone<span class="text-muted"></span></label>
+                            <input type="text" name="telefone" class="form-control" id="telefone" placeholder="Telefone (com DDD)">
+                            <div class="invalid-feedback">
+                                Por favor, insira um telefone.
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email <span class="text-muted"></span></label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="nome@exemplo.com">
+                            <div class="invalid-feedback">
+                                Por favor, insira um email.
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="country" class="form-label">Plano Escolhido</label>
+                            <?php
+                            require 'banco.php';
+                            $sql = "SELECT `idPlano`,`nome` FROM `academia`.`planos`";
+                            $planos = $conn->query($sql);
+
+                            if ($planos->num_rows == 0) {
+                                echo "<p>Nenhum plano encontrado</p>";
+                            } else {
+                                echo "<select name='idPlano' class='form-select' id='state' required>";
+                                echo "<option value=''>Escolha...</option>";
+                                while ($plano = $planos->fetch_assoc()) {
+                                    echo "<option value='$plano[idPlano]'>$plano[nome]</option>";
+                                }
+                                echo "</select>";
+                            }
+                            $conn->close();
+                            ?>
+                            <div class="invalid-feedback">
+                                Por favor, insira um plano.
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="state" class="form-label">Treinador</label>
+                            <?php
+                            require 'banco.php';
+                            $sql = "SELECT `idTreinador`,`nome` FROM `academia`.`treinadores`";
+                            $treinadores = $conn->query($sql);
+                            
+                            if ($treinadores->num_rows == 0) {
+                                echo "<p>Nenhum treinador encontrado</p>";
+                            } else {
+                                echo "<select name='idTreinador' class='form-select' id='state' required>";
+                                echo "<option value=''>Escolha...</option>";
+                                while ($treinador = $treinadores->fetch_assoc()) {
+                                    echo "<option value='$treinador[idTreinador]'>$treinador[nome]</option>";
+                                }
+                                echo "</select>";
+                            }
+                            $conn->close();
+                            ?>
+                            <div class="invalid-feedback">
+                                Por favor, insira um treinador.
+                            </div>
+                        </div>
+
+                        <button class="w-50 btn btn-primary btn-lg" type="submit">Enviar Dados</button>
+                        <button class="w-50 btn btn-secondary btn-lg" type="reset">Limpar</button>
+
+                </form>
+            </div>
+    </div>
     </main>
-    <footer>
-        <p></p>
-    </footer>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/form-validation.js"></script>
 </body>
 
 </html>

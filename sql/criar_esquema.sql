@@ -50,18 +50,19 @@ CREATE TABLE `membros` (
   `endereco` varchar(50) DEFAULT NULL,
   `telefone` varchar(15) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `idPagamento` int DEFAULT NULL,
+  `idPlano` int DEFAULT NULL,
   `idTreinador` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pagamentos`
+-- Estrutura da tabela `planos`
 --
 
-CREATE TABLE `pagamentos` (
-  `idPagamento` int NOT NULL,
+CREATE TABLE `planos` (
+  `idPlano` int NOT NULL,
+  `nome` varchar(40) NOT NULL,
   `valor` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -79,7 +80,7 @@ CREATE TABLE `treinadores` (
   `endereco` varchar(50) DEFAULT NULL,
   `telefone` varchar(15) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `idPagamento` int DEFAULT NULL
+  `idPlano` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -97,21 +98,21 @@ ALTER TABLE `login`
 --
 ALTER TABLE `membros`
   ADD PRIMARY KEY (`idMembro`),
-  ADD KEY `idPagamento` (`idPagamento`),
+  ADD KEY `idPlano` (`idPlano`),
   ADD KEY `idTreinador` (`idTreinador`);
 
 --
--- Índices para tabela `pagamentos`
+-- Índices para tabela `planos`
 --
-ALTER TABLE `pagamentos`
-  ADD PRIMARY KEY (`idPagamento`);
+ALTER TABLE `planos`
+  ADD PRIMARY KEY (`idPlano`);
 
 --
 -- Índices para tabela `treinadores`
 --
 ALTER TABLE `treinadores`
   ADD PRIMARY KEY (`idTreinador`),
-  ADD KEY `idPagamento` (`idPagamento`);
+  ADD KEY `idPlano` (`idPlano`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -130,10 +131,10 @@ ALTER TABLE `membros`
   MODIFY `idMembro` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT de tabela `pagamentos`
+-- AUTO_INCREMENT de tabela `planos`
 --
-ALTER TABLE `pagamentos`
-  MODIFY `idPagamento` int NOT NULL AUTO_INCREMENT;
+ALTER TABLE `planos`
+  MODIFY `idPlano` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `treinadores`
@@ -149,14 +150,14 @@ ALTER TABLE `treinadores`
 -- Limitadores para a tabela `membros`
 --
 ALTER TABLE `membros`
-  ADD CONSTRAINT `membros_ibfk_1` FOREIGN KEY (`idPagamento`) REFERENCES `pagamentos` (`idPagamento`),
+  ADD CONSTRAINT `membros_ibfk_1` FOREIGN KEY (`idPlano`) REFERENCES `planos` (`idPlano`),
   ADD CONSTRAINT `membros_ibfk_2` FOREIGN KEY (`idTreinador`) REFERENCES `treinadores` (`idTreinador`);
 
 --
 -- Limitadores para a tabela `treinadores`
 --
 ALTER TABLE `treinadores`
-  ADD CONSTRAINT `treinadores_ibfk_1` FOREIGN KEY (`idPagamento`) REFERENCES `pagamentos` (`idPagamento`);
+  ADD CONSTRAINT `treinadores_ibfk_1` FOREIGN KEY (`idPlano`) REFERENCES `planos` (`idPlano`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

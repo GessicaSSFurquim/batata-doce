@@ -68,6 +68,7 @@ $treinador = $treinadores->fetch_assoc();
 
     <div class="container">
         <main>
+        <a class="btn btn-secondary" href="/admin.php" role="button">Voltar</a>
             <div class="py-5 text-center">
                 <h2>Alterar Treinadores</h2>
             </div>

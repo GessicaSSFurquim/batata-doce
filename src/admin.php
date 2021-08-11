@@ -51,22 +51,42 @@ if (!isset($_SESSION['usuario'])) {
                         <h1 class="wow fadeInDown" data-wow-delay="0.2s">Área de administração</h1>
                     </div>
                     <div class="col-md-12">
-                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
+                        
+                    <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
                             <div class="pitch-icon"> <i class="ion-ios-checkmark-outline"></i> </div>
                             <div class="pitch-content">
-                                <h1><a href="form_membro.php" style="text-decoration:none">Membros</a></h1>
+                                <h1><a href="membros.php" style="text-decoration:none">Membros</a></h1>
                             </div>
                         </div>
                         <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
                             <div class="pitch-icon"> <i class="ion-ios-checkmark-outline"></i> </div>
                             <div class="pitch-content">
-                                <h1><a href="form_pagamento.php" style="text-decoration:none">Pagamentos</a></h1>
+                                <h1><a href="planos.php" style="text-decoration:none">Planos</a></h1>
                             </div>
                         </div>
                         <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
                             <div class="pitch-icon"> <i class="ion-ios-checkmark-outline"></i> </div>
                             <div class="pitch-content">
-                                <h1><a href="form_treinador.php" style="text-decoration:none">Treinadores</a></h1>
+                                <h1><a href="treinadores.php" style="text-decoration:none">Treinadores</a></h1>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
+                            <div class="pitch-icon"> <i class="ion-ios-checkmark-outline"></i> </div>
+                            <div class="pitch-content">
+                                <h1><a href="form_membro.php" style="text-decoration:none">Cadastrar Membros</a></h1>
+                            </div>
+                        </div>
+                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
+                            <div class="pitch-icon"> <i class="ion-ios-checkmark-outline"></i> </div>
+                            <div class="pitch-content">
+                                <h1><a href="form_plano.php" style="text-decoration:none">Cadastrar Planos</a></h1>
+                            </div>
+                        </div>
+                        <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
+                            <div class="pitch-icon"> <i class="ion-ios-checkmark-outline"></i> </div>
+                            <div class="pitch-content">
+                                <h1><a href="form_treinador.php" style="text-decoration:none">Cadastrar Treinadores</a></h1>
                             </div>
                         </div>
                     </div>

@@ -4,6 +4,19 @@ if (!isset($_SESSION['usuario'])) {
     header("location:http://localhost:8081/form_login.html");
 }
 ?>
+<?php
+if (!isset($_GET['idTreinador'])) {
+    header("location:http://localhost:8081/treinadores.php");
+}
+require 'banco.php';
+$id = $_GET['idTreinador'];
+$sql = "SELECT * FROM `academia`.`treinadores` WHERE idTreinador  = $id";
+$treinadores = $conn->query($sql);
+if ($treinadores->num_rows != 1) {
+    header("location:http://localhost:8081/treinadores.php");
+}
+$treinador = $treinadores->fetch_assoc();
+?>
 <!doctype html>
 <html lang="en">
 
@@ -13,7 +26,7 @@ if (!isset($_SESSION['usuario'])) {
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.87.0">
-    <title>Form Membro</title>
+    <title>Edita treinador</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">
 
@@ -56,16 +69,21 @@ if (!isset($_SESSION['usuario'])) {
     <div class="container">
         <main>
             <div class="py-5 text-center">
-                <h2>Cadastro de Membros</h2>
+                <h2>Alterar Treinadores</h2>
             </div>
             <div class="col-md-7 col-lg-10">
-                <h4 class="mb-3">Dados Pessoais</h4>
-                <form class="needs-validation" novalidate action="cadastro_membro.php" method="POST">
+                <h4 class="mb-3">Dados do Treinador</h4>
 
+                <form class="needs-validation" novalidate action="edita_treinador.php" method="POST">
+                    <?php
+                    echo "<input type='hidden' name='idTreinador' value='$treinador[idTreinador]' required>";
+                    ?>
                     <div class="row g-3">
                         <div class="col-12">
                             <label for="firstName" class="form-label">Nome</label>
-                            <input type="text" name="nome" class="form-control" id="firstName" placeholder="Nome completo" value="" required>
+                            <?php
+                            echo "<input type='text' name='nome' class='form-control' id='nome' value='$treinador[nome]' required>";
+                            ?>
                             <div class="invalid-feedback">
                                 Por favor, insira um nome.
                             </div>
@@ -73,7 +91,9 @@ if (!isset($_SESSION['usuario'])) {
 
                         <div class="col-12">
                             <label for="dataDeNascimento" class="form-label">Data de Nascimento<span class="text-muted"></span></label>
-                            <input type="date" name="dataDeNascimento" class="form-control" id="dataDeNascimento">
+                            <?php
+                            echo "<input type='date' name='dataDeNascimento' class='form-control' id='dataDeNascimento' value='$treinador[dataDeNascimento]'>";
+                            ?>
                             <div class="invalid-feedback">
                                 Por favor, insira uma data de nascimento.
                             </div>
@@ -81,7 +101,9 @@ if (!isset($_SESSION['usuario'])) {
 
                         <div class="col-12">
                             <label for="cpf" class="form-label">CPF<span class="text-muted"></span></label>
-                            <input type="text" name="cpf" class="form-control" id="cpf" placeholder="000.000.000-00">
+                            <?php
+                            echo "<input type='text' name='cpf' class='form-control' id='cpf' value='$treinador[cpf]'>";
+                            ?>
                             <div class="invalid-feedback">
                                 Por favor, insira um cpf.
                             </div>
@@ -89,7 +111,9 @@ if (!isset($_SESSION['usuario'])) {
 
                         <div class="col-12">
                             <label for="address" class="form-label">Endereço</label>
-                            <input type="text" name="endereco" class="form-control" id="address" placeholder="Exemplo: Rua das Flores, 000 - Jardim das Orquídeas - Americana/SP" required>
+                            <?php
+                            echo "<input type='text' name='endereco' class='form-control' id='address' value='$treinador[endereco]' required>";
+                            ?>
                             <div class="invalid-feedback">
                                 Por favor, insira um endereço.
                             </div>
@@ -97,7 +121,9 @@ if (!isset($_SESSION['usuario'])) {
 
                         <div class="col-12">
                             <label for="telefone" class="form-label">Telefone<span class="text-muted"></span></label>
-                            <input type="text" name="telefone" class="form-control" id="telefone" placeholder="Telefone (com DDD)">
+                            <?php
+                            echo "<input type='text' name='telefone' class='form-control' id='telefone' value='$treinador[telefone]'>";
+                            ?>
                             <div class="invalid-feedback">
                                 Por favor, insira um telefone.
                             </div>
@@ -105,7 +131,9 @@ if (!isset($_SESSION['usuario'])) {
 
                         <div class="col-12">
                             <label for="email" class="form-label">Email <span class="text-muted"></span></label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="nome@exemplo.com">
+                            <?php
+                            echo "<input type='email' name='email' class='form-control' id='email' value='$treinador[email]'>";
+                            ?>
                             <div class="invalid-feedback">
                                 Por favor, insira um email.
                             </div>
@@ -121,49 +149,28 @@ if (!isset($_SESSION['usuario'])) {
                             if ($planos->num_rows == 0) {
                                 echo "<p>Nenhum plano encontrado</p>";
                             } else {
-                                echo "<select name='idPlano' class='form-select' id='state' required>";
-                                echo "<option value=''>Escolha...</option>";
+                                echo "<select value='$treinador[idPlano]' name='idPlano' class='form-select' id='state' required>";
                                 while ($plano = $planos->fetch_assoc()) {
-                                    echo "<option value='$plano[idPlano]'>$plano[nome]</option>";
+                                    if ($plano['idPlano'] == $treinador['idPlano']) {
+                                        echo "<option selected value='$plano[idPlano]'>$plano[nome]</option>";
+                                    } else {
+                                        echo "<option value='$plano[idPlano]'>$plano[nome]</option>";
+                                    }
                                 }
                                 echo "</select>";
                             }
-                            $conn->close();
                             ?>
                             <div class="invalid-feedback">
                                 Por favor, insira um plano.
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <label for="state" class="form-label">Treinador</label>
-                            <?php
-                            require 'banco.php';
-                            $sql = "SELECT `idTreinador`,`nome` FROM `academia`.`treinadores`";
-                            $treinadores = $conn->query($sql);
-
-                            if ($treinadores->num_rows == 0) {
-                                echo "<p>Nenhum treinador encontrado</p>";
-                            } else {
-                                echo "<select name='idTreinador' class='form-select' id='state' required>";
-                                echo "<option value=''>Escolha...</option>";
-                                while ($treinador = $treinadores->fetch_assoc()) {
-                                    echo "<option value='$treinador[idTreinador]'>$treinador[nome]</option>";
-                                }
-                                echo "</select>";
-                            }
-                            $conn->close();
-                            ?>
-                            <div class="invalid-feedback">
-                                Por favor, insira um treinador.
-                            </div>
-                        </div>
-
                         <div>
-                            <button class="w-25 btn btn-secondary btn-sm" type="reset">Limpar</button>
-                            <button class="w-25 btn btn-primary btn-sm" type="submit">Cadastrar</button>
+                           <a class="btn btn-secondary" href="/treinadores.php" role="button">Voltar</a>
+                            <button class="w-25 btn btn-primary btn-sm" type="submit">Alterar</button>
                         </div>
-                    </div>
+
+
                 </form>
             </div>
     </div>
@@ -174,5 +181,8 @@ if (!isset($_SESSION['usuario'])) {
 
     <script src="js/form-validation.js"></script>
 </body>
+<?php
+$conn->close();
+?>
 
 </html>
